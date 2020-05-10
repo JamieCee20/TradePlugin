@@ -1,4 +1,4 @@
-main: com.westosia.quests.<name>
+main: com.westosia.<name>.Main
 name: <Name>
 version: ${project.version}
 api-version: 1.13
