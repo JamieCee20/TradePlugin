@@ -1,6 +1,6 @@
-main: com.westosia.<name>.Main
-name: <Name>
+main: com.westosia.TradingPlugin.Main
+name: TradingPlugin
 version: ${project.version}
 api-version: 1.13
-author: <Author>
-description: <Description>
+author: Jamie Cee
+description: A trading plugin to allow 2 players to trade items with one another.
