@@ -1,11 +1,11 @@
-package com.westosia.TradingPlugin.Trading;
+package com.westosia.TradingPlugin.trading;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
-import com.westosia.TradingPlugin.Listener.TradeListener;
+import com.westosia.TradingPlugin.listener.TradeListener;
 import com.westosia.westosiaapi.WestosiaAPI;
 import com.westosia.westosiaapi.api.Notifier;
 import org.bukkit.Bukkit;
@@ -82,6 +82,13 @@ public class TradeCommand extends BaseCommand {
                     WestosiaAPI.getNotifier().sendChatMessage(tradeWith, Notifier.NotifyStatus.ERROR, "Player declined your trade request");
                     requestTrade.remove(player);
                 }
+            } else if(args[0].equalsIgnoreCase("help")) {
+                    WestosiaAPI.getNotifier().sendChatMessage(player, Notifier.NotifyStatus.INFO, "Help with Trading?");
+                    WestosiaAPI.getNotifier().sendChatMessage(player, Notifier.NotifyStatus.BLANK, " ");
+                    WestosiaAPI.getNotifier().sendChatMessage(player, Notifier.NotifyStatus.INFO, "To initiate a trade, type: /trade request {player}");
+                    WestosiaAPI.getNotifier().sendChatMessage(player, Notifier.NotifyStatus.INFO, "To accept a trade type: /trade accept");
+                    WestosiaAPI.getNotifier().sendChatMessage(player, Notifier.NotifyStatus.INFO, "To decline a trade type: /trade decline");
+                    requestTrade.remove(player);
             }
         }
     }

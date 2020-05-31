@@ -1,8 +1,8 @@
 package com.westosia.TradingPlugin;
 
 import co.aikar.commands.PaperCommandManager;
-import com.westosia.TradingPlugin.Listener.TradeListener;
-import com.westosia.TradingPlugin.Trading.TradeCommand;
+import com.westosia.TradingPlugin.listener.TradeListener;
+import com.westosia.TradingPlugin.trading.TradeCommand;
 import com.westosia.westosiaapi.utils.Text;
 import org.bukkit.plugin.java.JavaPlugin;
 

@@ -1,9 +1,8 @@
-package com.westosia.TradingPlugin.Listener;
+package com.westosia.TradingPlugin.listener;
 
 import com.westosia.westosiaapi.Main;
 import com.westosia.westosiaapi.WestosiaAPI;
 import com.westosia.westosiaapi.api.Notifier;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -13,14 +12,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -95,24 +92,26 @@ public class TradeListener implements Listener {
 
     @EventHandler
     public void onInventoryDrag(InventoryDragEvent e) {
-        if (!(e.getWhoClicked() instanceof Player)) {
-            return;
-        }
-        Player player = (Player) e.getWhoClicked();
-        Inventory inv = e.getInventory();
-        if (inv.getViewers().contains(player)) {
-            if (accept1 == true && accept2 == true) {
-                for (int slots : e.getInventorySlots()) {
-                    if (e.getInventorySlots().size() > 0 ) {
-                        if ((player.equals(p1) && accept1) || (player.equals(p2) && accept2) && plugin.getConfig().getBoolean("antiscam.preventchangeonaccept")) {
-                            e.setCancelled(true);
-                            return;
+        if (e.getView().getTitle().equals("TRADE INVENTORY")) {
+            if (!(e.getWhoClicked() instanceof Player)) {
+                return;
+            }
+            Player player = (Player) e.getWhoClicked();
+            Inventory inv = e.getInventory();
+            if (inv.getViewers().contains(player)) {
+                if (accept1 == true && accept2 == true) {
+                    for (int slots : e.getInventorySlots()) {
+                        if (e.getInventorySlots().size() > 0) {
+                            if ((player.equals(p1) && accept1) || (player.equals(p2) && accept2) && plugin.getConfig().getBoolean("antiscam.preventchangeonaccept")) {
+                                e.setCancelled(true);
+                                return;
+                            }
                         }
                     }
+                } else {
+                    e.setCancelled(true);
+                    return;
                 }
-            } else {
-                e.setCancelled(true);
-                return;
             }
         }
     }
